@@ -1,0 +1,194 @@
+{
+  "source": "Department of Finance Canada — Fiscal Monitor",
+  "source_url": "https://www.canada.ca/en/department-finance/services/publications/fiscal-monitor.html",
+  "edition": {
+    "year": 2025,
+    "month": 10,
+    "name": "October 2025: Data tables and charts",
+    "url": "https://open.canada.ca/data/dataset/7680320b-c837-4b67-b73f-9361c4a9716d/resource/e6be3782-6d2f-4a94-8707-5af8e8852efb/download/2025-10.zip",
+    "package": "The Fiscal Monitor: 2025",
+    "updated": "2026-01-07T19:04:03.196941"
+  },
+  "fetched_at": "2026-04-14T16:42:15+00:00",
+  "units": "CAD millions",
+  "summary": {
+    "period_labels": {
+      "month_prior": "October 2024",
+      "month_current": "October 2025",
+      "ytd_prior": "April to October 2024-25",
+      "ytd_current": "April to October 2025-26"
+    },
+    "revenues": {
+      "month_prior": 40989,
+      "month_current": 41543,
+      "ytd_prior": 273399,
+      "ytd_current": 279769
+    },
+    "program_expenses": {
+      "month_prior": 37867,
+      "month_current": 39036,
+      "ytd_prior": 253092,
+      "ytd_current": 263283
+    },
+    "public_debt_charges": {
+      "month_prior": 4280,
+      "month_current": 4370,
+      "ytd_prior": 32466,
+      "ytd_current": 31950
+    },
+    "net_actuarial_losses": {
+      "month_prior": -335,
+      "month_current": -415,
+      "ytd_prior": -2345,
+      "ytd_current": -2905
+    },
+    "budgetary_balance": {
+      "month_prior": -1493,
+      "month_current": -2278,
+      "ytd_prior": -14504,
+      "ytd_current": -18369
+    }
+  },
+  "spending_breakdown": {
+    "line_items": [
+      {
+        "section": "Major transfers to persons",
+        "label": "Elderly benefits",
+        "ytd_prior": 46573,
+        "ytd_current": 47577
+      },
+      {
+        "section": "Major transfers to persons",
+        "label": "Employment Insurance benefits",
+        "ytd_prior": 13428,
+        "ytd_current": 15551
+      },
+      {
+        "section": "Major transfers to persons",
+        "label": "COVID-19 income support for workers[1]",
+        "ytd_prior": -358,
+        "ytd_current": 57
+      },
+      {
+        "section": "Major transfers to persons",
+        "label": "Children's benefits",
+        "ytd_prior": 16383,
+        "ytd_current": 17173
+      },
+      {
+        "section": "Major transfers to persons",
+        "label": "Total major transfers to persons",
+        "ytd_prior": 76026,
+        "ytd_current": 80358
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Canada Health Transfer",
+        "ytd_prior": 30380,
+        "ytd_current": 31899
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Canada Social Transfer",
+        "ytd_prior": 9863,
+        "ytd_current": 10159
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Equalization",
+        "ytd_prior": 14731,
+        "ytd_current": 15266
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Territorial Formula Financing",
+        "ytd_prior": 3405,
+        "ytd_current": 3623
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Canada-Wide Early Learning and Child Care",
+        "ytd_prior": 2018,
+        "ytd_current": 2416
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Canada Community-Building Fund",
+        "ytd_prior": 1175,
+        "ytd_current": 1243
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Health agreements with provinces/territories[2]",
+        "ytd_prior": 2250,
+        "ytd_current": 2456
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Other fiscal arrangements[3]",
+        "ytd_prior": -4582,
+        "ytd_current": -4453
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Total major transfers to provinces, territories and municipalities",
+        "ytd_prior": 59240,
+        "ytd_current": 62609
+      },
+      {
+        "section": "Major transfers to provinces, territories and municipalities",
+        "label": "Pollution pricing proceeds returned to Canadians",
+        "ytd_prior": 8778,
+        "ytd_current": 2723
+      },
+      {
+        "section": "Direct program expenses",
+        "label": "Other transfer payments",
+        "ytd_prior": 42158,
+        "ytd_current": 45352
+      },
+      {
+        "section": "Direct program expenses",
+        "label": "Operating expenses",
+        "ytd_prior": 66890,
+        "ytd_current": 72241
+      },
+      {
+        "section": "Direct program expenses",
+        "label": "Total direct program expenses",
+        "ytd_prior": 109048,
+        "ytd_current": 117593
+      },
+      {
+        "section": "Direct program expenses",
+        "label": "Total program expenses, excluding net actuarial losses",
+        "ytd_prior": 253092,
+        "ytd_current": 263283
+      },
+      {
+        "section": "Direct program expenses",
+        "label": "Public debt charges",
+        "ytd_prior": 32466,
+        "ytd_current": 31950
+      },
+      {
+        "section": "Direct program expenses",
+        "label": "Total expenses, excluding net actuarial losses",
+        "ytd_prior": 285558,
+        "ytd_current": 295233
+      },
+      {
+        "section": "Direct program expenses",
+        "label": "Net actuarial losses",
+        "ytd_prior": 2345,
+        "ytd_current": 2905
+      },
+      {
+        "section": "Direct program expenses",
+        "label": "Total expenses",
+        "ytd_prior": 287903,
+        "ytd_current": 298138
+      }
+    ]
+  }
+}

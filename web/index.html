@@ -11,18 +11,53 @@
 <body>
 <header>
   <h1>Canada Fiscal Tracker</h1>
-  <div id="last-updated">Loading…</div>
+  <div id="period" class="muted">Loading…</div>
 </header>
+
 <main>
-  <section class="card">
-    <h2>Pipeline status</h2>
-    <p class="muted">
-      Skeleton deployed. No real data sources are wired up yet — the next
-      milestones are Fiscal Monitor, PBO, StatCan, and news.
-    </p>
-    <pre id="index-dump">Loading…</pre>
+
+  <!-- Big headline number -->
+  <section class="card headline">
+    <div class="label">Budgetary balance, year-to-date</div>
+    <div class="big" id="balance">—</div>
+    <div class="sub" id="balance-compare">&nbsp;</div>
   </section>
+
+  <!-- Debt interest clock -->
+  <section class="card">
+    <div class="label">Public debt charges — running counter</div>
+    <div class="big accent" id="debt-clock">—</div>
+    <div class="sub muted" id="debt-rate">&nbsp;</div>
+  </section>
+
+  <!-- Revenue vs spending -->
+  <div class="grid-2">
+    <section class="card">
+      <div class="label">Revenues (YTD)</div>
+      <div class="med" id="revenues">—</div>
+      <div class="sub" id="revenues-compare">&nbsp;</div>
+    </section>
+    <section class="card">
+      <div class="label">Program expenses (YTD)</div>
+      <div class="med" id="expenses">—</div>
+      <div class="sub" id="expenses-compare">&nbsp;</div>
+    </section>
+  </div>
+
+  <!-- Spending breakdown bars -->
+  <section class="card">
+    <h2>Spending breakdown, year-to-date</h2>
+    <div id="breakdown" class="bars"></div>
+  </section>
+
+  <!-- Meta / source -->
+  <section class="card source">
+    <div class="muted" id="source-info">Source: loading…</div>
+    <div class="muted" id="last-updated">&nbsp;</div>
+  </section>
+
 </main>
+
 <script src="app.js"></script>
 </body>
 </html>
