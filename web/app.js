@@ -26,51 +26,106 @@ function deltaClass(cur, prior, opts = {}) {
   return higher === goodUp ? "good" : "bad";
 }
 
-// ---------- top-level spending categories we want to chart ----------
-// Each entry: [label, matcher(lineItem) → bool, color]
-const CATEGORY_SPEC = [
-  ["Elderly benefits", (l) => /elderly benefits/i.test(l.label), "#f97316"],
-  ["Employment Insurance", (l) => /^employment insurance benefits/i.test(l.label), "#fb923c"],
-  ["Children's benefits", (l) => /children'?s benefits/i.test(l.label), "#fdba74"],
-  ["Canada Health Transfer", (l) => /canada health transfer/i.test(l.label), "#60a5fa"],
-  ["Canada Social Transfer", (l) => /canada social transfer/i.test(l.label), "#93c5fd"],
-  ["Equalization", (l) => /^equalization/i.test(l.label), "#3b82f6"],
-  ["Territorial Financing", (l) => /territorial formula financing/i.test(l.label), "#2563eb"],
-  ["Child care", (l) => /early learning and child care/i.test(l.label), "#a78bfa"],
-  ["Other transfer payments", (l) => /^other transfer payments/i.test(l.label), "#c084fc"],
-  ["Operating expenses", (l) => /^operating expenses/i.test(l.label), "#34d399"],
-  ["Public debt charges", (l) => /public debt charges/i.test(l.label), "#f87171"],
+// ---------- hierarchical breakdown rendering ----------
+
+// We want to skip "Total expenses" / "Total program expenses" subtotals that
+// aren't directly useful as their own bar (they roll up other subtotals).
+const ROLLUP_SKIP = [
+  /^total expenses$/i,
+  /^total expenses, excluding/i,
+  /^total program expenses, excluding/i,
+  /^net actuarial losses$/i,
 ];
 
-function buildBreakdown(lineItems) {
-  const rows = [];
-  for (const [name, matcher, color] of CATEGORY_SPEC) {
-    const hit = lineItems.find((l) => matcher(l));
-    if (hit && hit.ytd_current != null) {
-      rows.push({ name, color, value: hit.ytd_current, prior: hit.ytd_prior });
-    }
-  }
-  rows.sort((a, b) => b.value - a.value);
-  return rows;
+const SECTION_COLORS = {
+  "Major transfers to persons": "#f97316",
+  "Major transfers to provinces, territories and municipalities": "#60a5fa",
+  "Direct program expenses": "#a78bfa",
+  "Other expenses": "#34d399",
+  null: "#94a3b8",
+  "": "#94a3b8",
+};
+
+function shouldSkip(item) {
+  return ROLLUP_SKIP.some((re) => re.test(item.label));
 }
 
-function renderBars(container, rows) {
+function groupBySection(lineItems) {
+  const groups = new Map();
+  for (const item of lineItems) {
+    if (shouldSkip(item)) continue;
+    const key = item.section || "Other";
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(item);
+  }
+  return groups;
+}
+
+function renderHierarchicalBreakdown(container, lineItems) {
   container.innerHTML = "";
-  const max = Math.max(...rows.map((r) => r.value));
-  for (const r of rows) {
-    const pct = (r.value / max) * 100;
-    const delta = fmtPct(r.value, r.prior);
-    const deltaCls = deltaClass(r.value, r.prior, { goodUp: false });
-    const row = document.createElement("div");
-    row.className = "bar-row";
-    row.innerHTML = `
-      <div class="bar-label">${r.name}</div>
-      <div class="bar-track">
-        <div class="bar-fill" style="width:${pct}%; background:${r.color}"></div>
+  const groups = groupBySection(lineItems);
+
+  // Find the largest single line-item value for consistent bar scaling.
+  let max = 0;
+  for (const items of groups.values()) {
+    for (const it of items) {
+      if (!it.is_subtotal && it.ytd_current != null && it.ytd_current > max) {
+        max = it.ytd_current;
+      }
+    }
+  }
+  if (max === 0) max = 1;
+
+  for (const [section, items] of groups.entries()) {
+    const subtotal = items.find((i) => i.is_subtotal);
+    const detail = items.filter((i) => !i.is_subtotal);
+    if (detail.length === 0) continue;
+
+    const color = SECTION_COLORS[section] || "#94a3b8";
+    const sectionEl = document.createElement("div");
+    sectionEl.className = "section";
+
+    const sectionTitle = (section || "Other").replace(/, territories and municipalities$/, "");
+    let subtotalHtml = "";
+    if (subtotal) {
+      const delta = fmtPct(subtotal.ytd_current, subtotal.ytd_prior);
+      const cls = deltaClass(subtotal.ytd_current, subtotal.ytd_prior, { goodUp: false });
+      subtotalHtml = `
+        <div class="section-total">${fmtCAD(subtotal.ytd_current)}
+          <span class="delta ${cls}">${delta}</span>
+        </div>`;
+    }
+
+    sectionEl.innerHTML = `
+      <div class="section-head">
+        <div class="section-title" style="color:${color}">${sectionTitle}</div>
+        ${subtotalHtml}
       </div>
-      <div class="bar-value">${fmtCAD(r.value)} <span class="delta ${deltaCls}">${delta}</span></div>
     `;
-    container.appendChild(row);
+
+    for (const it of detail) {
+      if (it.ytd_current == null) continue;
+      // Clean trailing footnote markers like "[1]" and odd spaces
+      const cleanLabel = it.label.replace(/\s*\[\d+\]/g, "").trim();
+      const pct = Math.max(1, (Math.abs(it.ytd_current) / max) * 100);
+      const delta = fmtPct(it.ytd_current, it.ytd_prior);
+      const deltaCls = deltaClass(it.ytd_current, it.ytd_prior, { goodUp: false });
+      const negative = it.ytd_current < 0;
+      const row = document.createElement("div");
+      row.className = "bar-row";
+      row.innerHTML = `
+        <div class="bar-label">${cleanLabel}</div>
+        <div class="bar-track">
+          <div class="bar-fill${negative ? " negative" : ""}"
+               style="width:${pct}%; background:${color}"></div>
+        </div>
+        <div class="bar-value">${fmtCAD(it.ytd_current)}
+          <span class="delta ${deltaCls}">${delta}</span>
+        </div>
+      `;
+      sectionEl.appendChild(row);
+    }
+    container.appendChild(sectionEl);
   }
 }
 
@@ -164,9 +219,15 @@ async function load() {
     const debt = fm.summary.public_debt_charges || {};
     startDebtClock(debt.ytd_current, period);
 
-    // Spending breakdown
-    const bars = buildBreakdown(fm.spending_breakdown.line_items || []);
-    renderBars(document.getElementById("breakdown"), bars);
+    // Spending breakdowns
+    renderHierarchicalBreakdown(
+      document.getElementById("breakdown-category"),
+      fm.spending_by_category?.line_items || []
+    );
+    renderHierarchicalBreakdown(
+      document.getElementById("breakdown-object"),
+      fm.spending_by_object?.line_items || []
+    );
 
     // Source + updated
     document.getElementById("source-info").innerHTML =

@@ -44,10 +44,32 @@
     </section>
   </div>
 
-  <!-- Spending breakdown bars -->
+  <!-- Spending breakdown — functional (where it goes) -->
   <section class="card">
-    <h2>Spending breakdown, year-to-date</h2>
-    <div id="breakdown" class="bars"></div>
+    <h2>Where the money goes</h2>
+    <p class="sub muted" style="margin-top:-4px;margin-bottom:12px;">
+      By program category — shows what each dollar buys.
+    </p>
+    <div id="breakdown-category" class="breakdown"></div>
+  </section>
+
+  <!-- Spending breakdown — economic (what it's spent on) -->
+  <section class="card">
+    <h2>What it's spent on</h2>
+    <p class="sub muted" style="margin-top:-4px;margin-bottom:12px;">
+      By object — transfers to other parties vs. what the government
+      consumes directly (people, services, rent, debt interest).
+    </p>
+    <div id="breakdown-object" class="breakdown"></div>
+  </section>
+
+  <section class="card callout">
+    <h2>Drill deeper?</h2>
+    <p class="muted">
+      Department-level spending (Defence, Health, Indigenous Services, etc.)
+      lives in Main Estimates and TBS GC InfoBase. Both sources currently
+      block automated scraping from this host — tracked as a follow-up.
+    </p>
   </section>
 
   <!-- Meta / source -->

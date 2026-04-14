@@ -142,15 +142,24 @@ def parse_table_1(rows: list[list[str]]) -> dict:
     return out
 
 
-def parse_table_3(rows: list[list[str]]) -> dict:
-    """Table 3 has 6 columns: label, month_prior, month_current, %, ytd_prior, ytd_current, %."""
-    categories: list[dict] = []
+def parse_breakdown_table(rows: list[list[str]]) -> dict:
+    """Parse a Fiscal-Monitor breakdown table (Table 3 or Table 4).
+
+    Both tables share 7 columns:
+        label, month_prior, month_current, pct_change,
+        ytd_prior, ytd_current, pct_change
+
+    We flag 'subtotal' rows (labels starting with 'Total') separately so the
+    dashboard can render hierarchy without double-counting in bar charts.
+    """
+    line_items: list[dict] = []
     current_section: Optional[str] = None
 
     section_headers = {
         "major transfers to persons",
         "major transfers to provinces, territories and municipalities",
         "direct program expenses",
+        "other expenses",
     }
 
     for row in rows:
@@ -163,27 +172,28 @@ def parse_table_3(rows: list[list[str]]) -> dict:
             current_section = label
             continue
 
-        # Skip header/footer rows
         if label_l.startswith(("table", "note", "$", ",")):
             continue
 
-        # Data row: need at least label + 6 value columns
         if len(row) < 6:
             continue
         ytd_prior = parse_number(row[4])
         ytd_current = parse_number(row[5])
         if ytd_current is None and ytd_prior is None:
             continue
-        categories.append(
+
+        is_subtotal = label_l.startswith("total")
+        line_items.append(
             {
                 "section": current_section,
                 "label": label,
                 "ytd_prior": ytd_prior,
                 "ytd_current": ytd_current,
+                "is_subtotal": is_subtotal,
             }
         )
 
-    return {"line_items": categories}
+    return {"line_items": line_items}
 
 
 def main() -> None:
@@ -199,7 +209,13 @@ def main() -> None:
     zf = zipfile.ZipFile(io.BytesIO(zr.content))
 
     t1 = parse_table_1(read_csv(zf, "Table_1.csv"))
-    t3 = parse_table_3(read_csv(zf, "Table_3.csv"))
+    t3 = parse_breakdown_table(read_csv(zf, "Table_3.csv"))
+    # Table 4 filename varies: "Table 4.csv" in some months, "Table_4.csv" in others.
+    t4_filename = next(
+        (n for n in zf.namelist() if n.replace(" ", "_").lower() == "table_4.csv"),
+        None,
+    )
+    t4 = parse_breakdown_table(read_csv(zf, t4_filename)) if t4_filename else {"line_items": []}
 
     result = {
         "source": "Department of Finance Canada — Fiscal Monitor",
@@ -208,7 +224,8 @@ def main() -> None:
         "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "units": "CAD millions",
         "summary": t1,
-        "spending_breakdown": t3,
+        "spending_by_category": t3,   # functional — elderly, EI, transfers, debt charges, …
+        "spending_by_object": t4,     # economic — personnel, professional services, rentals, …
     }
 
     OUT_FILE.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n")
