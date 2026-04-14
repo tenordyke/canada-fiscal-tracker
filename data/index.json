@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-04-14T15:59:16+00:00",
+  "fetchers": {
+    "fiscal_monitor": {
+      "status": "not_implemented"
+    },
+    "pbo": {
+      "status": "not_implemented"
+    },
+    "statcan": {
+      "status": "not_implemented"
+    },
+    "news": {
+      "status": "not_implemented"
+    }
+  }
+}

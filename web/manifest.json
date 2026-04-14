@@ -1,0 +1,12 @@
+{
+  "name": "Canada Fiscal Tracker",
+  "short_name": "CA Fiscal",
+  "description": "Live tracking of Canadian federal deficit, spending, and fiscal news",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f1419",
+  "theme_color": "#c41e3a",
+  "icons": []
+}
