@@ -61,7 +61,7 @@ function groupBySection(lineItems) {
   return groups;
 }
 
-function renderHierarchicalBreakdown(container, lineItems) {
+function renderHierarchicalBreakdown(container, lineItems, extras = {}) {
   container.innerHTML = "";
   const groups = groupBySection(lineItems);
 
@@ -82,10 +82,8 @@ function renderHierarchicalBreakdown(container, lineItems) {
     if (detail.length === 0) continue;
 
     const color = SECTION_COLORS[section] || "#94a3b8";
-    const sectionEl = document.createElement("div");
-    sectionEl.className = "section";
-
     const sectionTitle = (section || "Other").replace(/, territories and municipalities$/, "");
+
     let subtotalHtml = "";
     if (subtotal) {
       const delta = fmtPct(subtotal.ytd_current, subtotal.ytd_prior);
@@ -96,37 +94,107 @@ function renderHierarchicalBreakdown(container, lineItems) {
         </div>`;
     }
 
-    sectionEl.innerHTML = `
-      <div class="section-head">
-        <div class="section-title" style="color:${color}">${sectionTitle}</div>
+    const wrapper = document.createElement("details");
+    wrapper.className = "section";
+    wrapper.open = true;
+    wrapper.innerHTML = `
+      <summary class="section-head">
+        <span class="section-title" style="color:${color}">${sectionTitle}</span>
         ${subtotalHtml}
-      </div>
+      </summary>
+      <div class="section-body"></div>
     `;
+    const body = wrapper.querySelector(".section-body");
 
     for (const it of detail) {
       if (it.ytd_current == null) continue;
-      // Clean trailing footnote markers like "[1]" and odd spaces
       const cleanLabel = it.label.replace(/\s*\[\d+\]/g, "").trim();
       const pct = Math.max(1, (Math.abs(it.ytd_current) / max) * 100);
       const delta = fmtPct(it.ytd_current, it.ytd_prior);
       const deltaCls = deltaClass(it.ytd_current, it.ytd_prior, { goodUp: false });
       const negative = it.ytd_current < 0;
-      const row = document.createElement("div");
-      row.className = "bar-row";
-      row.innerHTML = `
-        <div class="bar-label">${cleanLabel}</div>
-        <div class="bar-track">
-          <div class="bar-fill${negative ? " negative" : ""}"
-               style="width:${pct}%; background:${color}"></div>
-        </div>
-        <div class="bar-value">${fmtCAD(it.ytd_current)}
-          <span class="delta ${deltaCls}">${delta}</span>
-        </div>
-      `;
-      sectionEl.appendChild(row);
+
+      // Check for a known sub-breakdown (Elderly benefits → OAS/GIS/Allowance)
+      const subBreakdown = extras?.subBreakdowns?.[cleanLabel.toLowerCase()];
+
+      if (subBreakdown) {
+        const subDetail = document.createElement("details");
+        subDetail.className = "bar-row has-sub";
+        subDetail.innerHTML = `
+          <summary>
+            <div class="bar-label">${cleanLabel}<span class="chip">▾</span></div>
+            <div class="bar-track">
+              <div class="bar-fill${negative ? " negative" : ""}"
+                   style="width:${pct}%; background:${color}"></div>
+            </div>
+            <div class="bar-value">${fmtCAD(it.ytd_current)}
+              <span class="delta ${deltaCls}">${delta}</span>
+            </div>
+          </summary>
+          <div class="sub-breakdown">${subBreakdown.html}</div>
+        `;
+        body.appendChild(subDetail);
+      } else {
+        const row = document.createElement("div");
+        row.className = "bar-row";
+        row.innerHTML = `
+          <div class="bar-label">${cleanLabel}</div>
+          <div class="bar-track">
+            <div class="bar-fill${negative ? " negative" : ""}"
+                 style="width:${pct}%; background:${color}"></div>
+          </div>
+          <div class="bar-value">${fmtCAD(it.ytd_current)}
+            <span class="delta ${deltaCls}">${delta}</span>
+          </div>
+        `;
+        body.appendChild(row);
+      }
     }
-    container.appendChild(sectionEl);
+    container.appendChild(wrapper);
   }
+}
+
+// ---------- OAS/GIS/Allowance sub-breakdown ----------
+
+function buildOasSubBreakdown(oasData) {
+  if (!oasData || !oasData.latest) return null;
+  const L = oasData.latest;
+  // Use prior fiscal year for YoY
+  const priorIdx = oasData.series.findIndex((s) => s.fiscal_year === L.fiscal_year) - 1;
+  const prior = priorIdx >= 0 ? oasData.series[priorIdx] : null;
+
+  // Values are in absolute dollars; convert to millions so fmtCAD works.
+  const parts = [
+    { name: "OAS pension (net of recovery tax)", value: L.oas_pension, prior: prior?.oas_pension, color: "#fb923c" },
+    { name: "Guaranteed Income Supplement", value: L.gis, prior: prior?.gis, color: "#f97316" },
+    { name: "Allowance / Allowance for Survivor", value: L.allowance, prior: prior?.allowance, color: "#fdba74" },
+  ];
+  const maxVal = Math.max(...parts.map((p) => p.value || 0));
+  const rows = parts.map((p) => {
+    const pct = Math.max(1, ((p.value || 0) / maxVal) * 100);
+    const pMil = p.value != null ? p.value / 1_000_000 : null;
+    const priorMil = p.prior != null ? p.prior / 1_000_000 : null;
+    const delta = fmtPct(pMil, priorMil);
+    const cls = deltaClass(pMil, priorMil, { goodUp: false });
+    return `
+      <div class="sub-row">
+        <div class="bar-label">${p.name}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%; background:${p.color}"></div></div>
+        <div class="bar-value">${fmtCAD(pMil)} <span class="delta ${cls}">${delta}</span></div>
+      </div>
+    `;
+  }).join("");
+
+  return {
+    html: `
+      <div class="sub-note">
+        Most recent full fiscal year (${L.fiscal_year}) from ESDC open data.
+        The Fiscal Monitor above reports only the combined figure YTD — this
+        sub-breakdown is annual and lags by a few months.
+      </div>
+      ${rows}
+    `,
+  };
 }
 
 // ---------- debt charges running counter ----------
@@ -173,15 +241,17 @@ function startDebtClock(ytdCharges, periodLabel) {
 
 async function load() {
   try {
-    const [indexRes, fmRes] = await Promise.all([
+    const [indexRes, fmRes, oasRes] = await Promise.all([
       fetch("data/index.json", { cache: "no-store" }),
       fetch("data/fiscal_monitor.json", { cache: "no-store" }),
+      fetch("data/oas_breakdown.json", { cache: "no-store" }).catch(() => null),
     ]);
     if (!indexRes.ok) throw new Error("index.json " + indexRes.status);
     if (!fmRes.ok) throw new Error("fiscal_monitor.json " + fmRes.status);
 
     const index = await indexRes.json();
     const fm = await fmRes.json();
+    const oas = oasRes && oasRes.ok ? await oasRes.json() : null;
 
     const period = fm.summary.period_labels.ytd_current || "";
     document.getElementById("period").textContent = period;
@@ -220,9 +290,14 @@ async function load() {
     startDebtClock(debt.ytd_current, period);
 
     // Spending breakdowns
+    const oasSub = buildOasSubBreakdown(oas);
+    const subBreakdowns = {};
+    if (oasSub) subBreakdowns["elderly benefits"] = oasSub;
+
     renderHierarchicalBreakdown(
       document.getElementById("breakdown-category"),
-      fm.spending_by_category?.line_items || []
+      fm.spending_by_category?.line_items || [],
+      { subBreakdowns }
     );
     renderHierarchicalBreakdown(
       document.getElementById("breakdown-object"),

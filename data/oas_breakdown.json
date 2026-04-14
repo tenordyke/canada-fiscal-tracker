@@ -1,0 +1,86 @@
+{
+  "source": "Employment and Social Development Canada",
+  "source_name": "OAS Net payments, by benefit type and fiscal year",
+  "source_url": "https://open.canada.ca/data/dataset/f064a144-b4e0-4e9b-9970-e0fc2f84d1a8/resource/a3632660-d390-4db6-ae9f-8feef65b28d1/download/20250331-svpaienetfinanciere-oasnetpayfiscal.csv",
+  "fetched_at": "2026-04-14T17:05:35+00:00",
+  "units": "CAD (absolute dollars)",
+  "latest": {
+    "fiscal_year": "2024-2025",
+    "oas_pension": 60648088711,
+    "gis": 18910375539,
+    "allowance": 631884378,
+    "total": 80190348629
+  },
+  "series": [
+    {
+      "fiscal_year": "2015-2016",
+      "oas_pension": 35050472599,
+      "gis": 9921659952,
+      "allowance": 512566866,
+      "total": 45484699417
+    },
+    {
+      "fiscal_year": "2016-2017",
+      "oas_pension": 36749167282,
+      "gis": 10922423837,
+      "allowance": 530236046,
+      "total": 48201827165
+    },
+    {
+      "fiscal_year": "2017-2018",
+      "oas_pension": 38409875247,
+      "gis": 11658538967,
+      "allowance": 544791268,
+      "total": 50613205483
+    },
+    {
+      "fiscal_year": "2018-2019",
+      "oas_pension": 40424123827,
+      "gis": 12404699571,
+      "allowance": 562520365,
+      "total": 53391343762
+    },
+    {
+      "fiscal_year": "2019-2020",
+      "oas_pension": 42706488727,
+      "gis": 13007928279,
+      "allowance": 555643258,
+      "total": 56270060265
+    },
+    {
+      "fiscal_year": "2020-2021",
+      "oas_pension": 44382661808,
+      "gis": 13685088912,
+      "allowance": 572156858,
+      "total": 58639907578
+    },
+    {
+      "fiscal_year": "2021-2022",
+      "oas_pension": 46221407443,
+      "gis": 14004834366,
+      "allowance": 528908824,
+      "total": 60755150634
+    },
+    {
+      "fiscal_year": "2022-2023",
+      "oas_pension": 52737283412,
+      "gis": 16100638016,
+      "allowance": 575161168,
+      "total": 69413082596
+    },
+    {
+      "fiscal_year": "2023-2024",
+      "oas_pension": 57444856822,
+      "gis": 18030935781,
+      "allowance": 608695612,
+      "total": 76084488216
+    },
+    {
+      "fiscal_year": "2024-2025",
+      "oas_pension": 60648088711,
+      "gis": 18910375539,
+      "allowance": 631884378,
+      "total": 80190348629
+    }
+  ]
+}

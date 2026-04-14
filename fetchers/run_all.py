@@ -13,13 +13,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
 
-from fetchers import fiscal_monitor
+from fetchers import fiscal_monitor, oas_breakdown
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
 
 FETCHERS: dict[str, Callable[[], None]] = {
     "fiscal_monitor": fiscal_monitor.main,
+    "oas_breakdown": oas_breakdown.main,
 }
 
 
@@ -37,7 +38,7 @@ def main() -> None:
             results[name] = {"status": "error", "error": f"{type(exc).__name__}: {exc}"}
 
     # Stubs for fetchers not yet implemented
-    for not_yet in ("pbo", "statcan", "news"):
+    for not_yet in ("pbo", "news"):
         results.setdefault(not_yet, {"status": "not_implemented", "error": None})
 
     index = {
