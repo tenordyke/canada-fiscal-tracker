@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-04-19T12:40:02+00:00",
+  "last_updated": "2026-04-19T18:36:22+00:00",
   "fetchers": {
     "fiscal_monitor": {
-      "status": "error",
-      "error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      "status": "ok",
+      "error": null
     },
     "oas_breakdown": {
       "status": "ok",
