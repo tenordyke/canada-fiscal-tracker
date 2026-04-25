@@ -2,7 +2,7 @@
   "source": "Employment and Social Development Canada",
   "source_name": "OAS Net payments, by benefit type and fiscal year",
   "source_url": "https://open.canada.ca/data/dataset/f064a144-b4e0-4e9b-9970-e0fc2f84d1a8/resource/a3632660-d390-4db6-ae9f-8feef65b28d1/download/20250331-svpaienetfinanciere-oasnetpayfiscal.csv",
-  "fetched_at": "2026-04-25T07:03:36+00:00",
+  "fetched_at": "2026-04-25T12:42:23+00:00",
   "units": "CAD (absolute dollars)",
   "latest": {
     "fiscal_year": "2024-2025",
