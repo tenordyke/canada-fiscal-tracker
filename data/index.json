@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-05-01T08:02:56+00:00",
+  "last_updated": "2026-05-01T12:57:58+00:00",
   "fetchers": {
     "fiscal_monitor": {
-      "status": "ok",
-      "error": null
+      "status": "error",
+      "error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
     },
     "oas_breakdown": {
-      "status": "ok",
-      "error": null
+      "status": "error",
+      "error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
     },
     "pbo": {
       "status": "not_implemented",
