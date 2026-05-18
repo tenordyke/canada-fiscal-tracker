@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-05-17T18:56:13+00:00",
+  "last_updated": "2026-05-18T02:31:05+00:00",
   "fetchers": {
     "fiscal_monitor": {
-      "status": "error",
-      "error": "ReadTimeout: HTTPSConnectionPool(host='open.canada.ca', port=443): Read timed out. (read timeout=30)"
+      "status": "ok",
+      "error": null
     },
     "oas_breakdown": {
-      "status": "error",
-      "error": "ReadTimeout: HTTPSConnectionPool(host='open.canada.ca', port=443): Read timed out. (read timeout=30)"
+      "status": "ok",
+      "error": null
     },
     "pbo": {
       "status": "not_implemented",
