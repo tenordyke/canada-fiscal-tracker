@@ -3,213 +3,192 @@
   "source_url": "https://www.canada.ca/en/department-finance/services/publications/fiscal-monitor.html",
   "edition": {
     "year": 2026,
-    "month": 3,
-    "name": "March 2026: Data tables and charts",
-    "url": "https://open.canada.ca/data/dataset/f5f4327b-2a09-484a-a518-64ca26405386/resource/8adc9a04-2abf-429f-a0e8-dc31a112b387/download/2026-03.zip",
+    "month": 5,
+    "name": "April and May 2026: Data tables and charts",
+    "url": "https://open.canada.ca/data/dataset/f5f4327b-2a09-484a-a518-64ca26405386/resource/69d256ee-6648-496a-a2a2-2a118719fdc7/download/2026-04.zip",
     "package": "The Fiscal Monitor: 2026",
-    "updated": "2026-06-15T13:31:58.384931"
+    "updated": "2026-07-31T15:43:23.938641"
   },
-  "fetched_at": "2026-07-31T13:41:44+00:00",
+  "fetched_at": "2026-07-31T19:08:45+00:00",
   "units": "CAD millions",
   "summary": {
     "period_labels": {
-      "month_prior": "March 2025",
-      "month_current": "March 2026",
-      "ytd_prior": "April to March 2024-25",
-      "ytd_current": "April to March 2025-26"
+      "month_prior": "April 2025($ millions)",
+      "month_current": "April 2026($ millions)",
+      "ytd_prior": "April 2025($ millions)",
+      "ytd_current": "May 2026($ millions)"
     },
     "revenues": {
-      "month_prior": 44977,
-      "month_current": 46771,
-      "ytd_prior": 494811,
-      "ytd_current": 500017
+      "month_prior": 38784,
+      "month_current": 45890,
+      "ytd_prior": 37244,
+      "ytd_current": 41936
     },
     "program_expenses": {
-      "month_prior": 64209,
-      "month_current": 62967,
-      "ytd_prior": 480291,
-      "ytd_current": 487892
+      "month_prior": 41131,
+      "month_current": 41753,
+      "ytd_prior": 34529,
+      "ytd_current": 36678
     },
     "public_debt_charges": {
-      "month_prior": 4313,
-      "month_current": 4401,
-      "ytd_prior": 53654,
-      "ytd_current": 53707
+      "month_prior": 5027,
+      "month_current": 4768,
+      "ytd_prior": 4576,
+      "ytd_current": 5156
     },
     "net_actuarial_losses": {
       "month_prior": -335,
-      "month_current": -9130,
-      "ytd_prior": -4020,
-      "ytd_current": -13695
+      "month_current": -415,
+      "ytd_prior": -335,
+      "ytd_current": -415
     },
     "budgetary_balance": {
-      "month_prior": -23880,
-      "month_current": -29727,
-      "ytd_prior": -43154,
-      "ytd_current": -55277
+      "month_prior": -7709,
+      "month_current": -1046,
+      "ytd_prior": -2196,
+      "ytd_current": -313
     }
   },
   "spending_by_category": {
     "line_items": [
       {
         "section": "Major transfers to persons",
-        "label": "Elderly benefits",
-        "ytd_prior": 80837,
-        "ytd_current": 83201,
+        "label": "Old Age Security program",
+        "ytd_prior": 7149,
+        "ytd_current": 13494,
         "is_subtotal": false
       },
       {
         "section": "Major transfers to persons",
         "label": "Employment Insurance benefits",
-        "ytd_prior": 25309,
-        "ytd_current": 28849,
-        "is_subtotal": false
-      },
-      {
-        "section": "Major transfers to persons",
-        "label": "COVID-19 income support for workers[1]",
-        "ytd_prior": -2146,
-        "ytd_current": 171,
+        "ytd_prior": 2529,
+        "ytd_current": 4045,
         "is_subtotal": false
       },
       {
         "section": "Major transfers to persons",
         "label": "Children's benefits",
-        "ytd_prior": 28590,
-        "ytd_current": 30116,
+        "ytd_prior": 2575,
+        "ytd_current": 4950,
         "is_subtotal": false
       },
       {
         "section": "Major transfers to persons",
         "label": "Total major transfers to persons",
-        "ytd_prior": 132590,
-        "ytd_current": 142337,
+        "ytd_prior": 12253,
+        "ytd_current": 22489,
         "is_subtotal": true
       },
       {
         "section": "Major transfers to provinces, territories and municipalities",
         "label": "Canada Health Transfer",
-        "ytd_prior": 52070,
-        "ytd_current": 54662,
+        "ytd_prior": 4790,
+        "ytd_current": 9114,
         "is_subtotal": false
       },
       {
         "section": "Major transfers to provinces, territories and municipalities",
         "label": "Canada Social Transfer",
-        "ytd_prior": 16909,
-        "ytd_current": 17416,
+        "ytd_prior": 1495,
+        "ytd_current": 2903,
         "is_subtotal": false
       },
       {
         "section": "Major transfers to provinces, territories and municipalities",
         "label": "Equalization",
-        "ytd_prior": 25253,
-        "ytd_current": 26170,
+        "ytd_prior": 2263,
+        "ytd_current": 4362,
         "is_subtotal": false
       },
       {
         "section": "Major transfers to provinces, territories and municipalities",
         "label": "Territorial Formula Financing",
-        "ytd_prior": 5159,
-        "ytd_current": 5489,
+        "ytd_prior": 935,
+        "ytd_current": 1756,
         "is_subtotal": false
       },
       {
         "section": "Major transfers to provinces, territories and municipalities",
-        "label": "Canada-Wide Early Learning and Child Care",
-        "ytd_prior": 6639,
-        "ytd_current": 7903,
+        "label": "Canada-wide early learning and child care",
+        "ytd_prior": null,
+        "ytd_current": 2150,
         "is_subtotal": false
       },
       {
         "section": "Major transfers to provinces, territories and municipalities",
-        "label": "Canada Community-Building Fund",
-        "ytd_prior": 2368,
-        "ytd_current": 2467,
-        "is_subtotal": false
-      },
-      {
-        "section": "Major transfers to provinces, territories and municipalities",
-        "label": "Health agreements with provinces/territories[2]",
-        "ytd_prior": 4300,
-        "ytd_current": 4300,
-        "is_subtotal": false
-      },
-      {
-        "section": "Major transfers to provinces, territories and municipalities",
-        "label": "Other fiscal arrangements[3]",
-        "ytd_prior": -7597,
-        "ytd_current": -7566,
+        "label": "Other fiscal arrangements [3]",
+        "ytd_prior": -698,
+        "ytd_current": -1338,
         "is_subtotal": false
       },
       {
         "section": "Major transfers to provinces, territories and municipalities",
         "label": "Total major transfers to provinces, territories and municipalities",
-        "ytd_prior": 105101,
-        "ytd_current": 110841,
+        "ytd_prior": 8785,
+        "ytd_current": 18947,
         "is_subtotal": true
       },
       {
         "section": "Major transfers to provinces, territories and municipalities",
         "label": "Pollution pricing proceeds returned to Canadians",
-        "ytd_prior": 15517,
-        "ytd_current": 4297,
+        "ytd_prior": 48,
+        "ytd_current": 2103,
         "is_subtotal": false
       },
       {
         "section": "Direct program expenses",
-        "label": "Other transfer payments[4]",
-        "ytd_prior": 102763,
-        "ytd_current": 102863,
+        "label": "Other transfer payments",
+        "ytd_prior": 5507,
+        "ytd_current": 13751,
         "is_subtotal": false
       },
       {
         "section": "Direct program expenses",
-        "label": "Operating expenses[4]",
-        "ytd_prior": 124320,
-        "ytd_current": 127554,
+        "label": "Operating expenses",
+        "ytd_prior": 10085,
+        "ytd_current": 18370,
         "is_subtotal": false
       },
       {
         "section": "Direct program expenses",
         "label": "Total direct program expenses",
-        "ytd_prior": 227083,
-        "ytd_current": 230417,
+        "ytd_prior": 15592,
+        "ytd_current": 32121,
         "is_subtotal": true
       },
       {
         "section": "Direct program expenses",
         "label": "Total program expenses, excluding net actuarial losses",
-        "ytd_prior": 480291,
-        "ytd_current": 487892,
+        "ytd_prior": 36678,
+        "ytd_current": 75660,
         "is_subtotal": true
       },
       {
         "section": "Direct program expenses",
         "label": "Public debt charges",
-        "ytd_prior": 53654,
-        "ytd_current": 53707,
+        "ytd_prior": 5156,
+        "ytd_current": 9603,
         "is_subtotal": false
       },
       {
         "section": "Direct program expenses",
         "label": "Total expenses, excluding net actuarial losses",
-        "ytd_prior": 533945,
-        "ytd_current": 541599,
+        "ytd_prior": 41834,
+        "ytd_current": 85263,
         "is_subtotal": true
       },
       {
         "section": "Direct program expenses",
         "label": "Net actuarial losses",
-        "ytd_prior": 4020,
-        "ytd_current": 13695,
+        "ytd_prior": 415,
+        "ytd_current": 670,
         "is_subtotal": false
       },
       {
         "section": "Direct program expenses",
         "label": "Total expenses",
-        "ytd_prior": 537965,
-        "ytd_current": 555294,
+        "ytd_prior": 42249,
+        "ytd_current": 85933,
         "is_subtotal": true
       }
     ]
@@ -218,121 +197,121 @@
     "line_items": [
       {
         "section": null,
-        "label": "Transfer payments[1]",
-        "ytd_prior": 355971,
-        "ytd_current": 360338,
+        "label": "Transfer payments",
+        "ytd_prior": 26593,
+        "ytd_current": 57290,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
         "label": "Personnel, excluding net actuarial losses",
-        "ytd_prior": 72697,
-        "ytd_current": 69162,
+        "ytd_prior": 6321,
+        "ytd_current": 12052,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
-        "label": "Transportation and communications[1]",
-        "ytd_prior": 2927,
-        "ytd_current": 3512,
+        "label": "Transportation and communications",
+        "ytd_prior": 226,
+        "ytd_current": 317,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
         "label": "Information",
-        "ytd_prior": 544,
-        "ytd_current": 571,
+        "ytd_prior": 31,
+        "ytd_current": 47,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
-        "label": "Professional and special services[1]",
-        "ytd_prior": 22299,
-        "ytd_current": 23190,
+        "label": "Professional and special services",
+        "ytd_prior": 1534,
+        "ytd_current": 1594,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
         "label": "Rentals",
-        "ytd_prior": 4704,
-        "ytd_current": 5041,
+        "ytd_prior": 359,
+        "ytd_current": 898,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
-        "label": "Repair and maintenance[1]",
-        "ytd_prior": 3572,
-        "ytd_current": 4766,
+        "label": "Repair and maintenance",
+        "ytd_prior": 219,
+        "ytd_current": 296,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
-        "label": "Utilities, materials and supplies[1]",
-        "ytd_prior": 4440,
-        "ytd_current": 3436,
+        "label": "Utilities, materials and supplies",
+        "ytd_prior": 190,
+        "ytd_current": 367,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
-        "label": "Other subsidies and expenses[1]",
-        "ytd_prior": 8019,
-        "ytd_current": 12647,
+        "label": "Other subsidies and expenses",
+        "ytd_prior": 717,
+        "ytd_current": 1724,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
         "label": "Amortization of tangible capital assets",
-        "ytd_prior": 4998,
-        "ytd_current": 5093,
+        "ytd_prior": 484,
+        "ytd_current": 1052,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
         "label": "Net loss on disposal of assets",
-        "ytd_prior": 120,
-        "ytd_current": 136,
+        "ytd_prior": 4,
+        "ytd_current": 23,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
         "label": "Total other expenses",
-        "ytd_prior": 124320,
-        "ytd_current": 127554,
+        "ytd_prior": 10085,
+        "ytd_current": 18370,
         "is_subtotal": true
       },
       {
         "section": "Other expenses",
         "label": "Total program expenses, excluding net actuarial losses",
-        "ytd_prior": 480291,
-        "ytd_current": 487892,
+        "ytd_prior": 36678,
+        "ytd_current": 75660,
         "is_subtotal": true
       },
       {
         "section": "Other expenses",
         "label": "Public debt charges",
-        "ytd_prior": 53654,
-        "ytd_current": 53707,
+        "ytd_prior": 5156,
+        "ytd_current": 9603,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
         "label": "Total expenses, excluding net actuarial losses",
-        "ytd_prior": 533945,
-        "ytd_current": 541599,
+        "ytd_prior": 41834,
+        "ytd_current": 85263,
         "is_subtotal": true
       },
       {
         "section": "Other expenses",
         "label": "Net actuarial losses",
-        "ytd_prior": 4020,
-        "ytd_current": 13695,
+        "ytd_prior": 415,
+        "ytd_current": 670,
         "is_subtotal": false
       },
       {
         "section": "Other expenses",
         "label": "Total expenses",
-        "ytd_prior": 537965,
-        "ytd_current": 555294,
+        "ytd_prior": 42249,
+        "ytd_current": 85933,
         "is_subtotal": true
       }
     ]
