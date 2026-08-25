@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-08-24T18:26:08+00:00",
+  "last_updated": "2026-08-25T00:42:26+00:00",
   "fetchers": {
     "fiscal_monitor": {
       "status": "ok",
