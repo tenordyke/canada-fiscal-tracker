@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-09-06T09:56:47+00:00",
+  "last_updated": "2026-09-06T14:40:04+00:00",
   "fetchers": {
     "fiscal_monitor": {
       "status": "error",
@@ -8,7 +8,7 @@
     },
     "oas_breakdown": {
       "status": "error",
-      "error": "ReadTimeout: HTTPSConnectionPool(host='open.canada.ca', port=443): Read timed out. (read timeout=30)"
+      "error": "HTTPError: 502 Server Error: Bad Gateway for url: https://open.canada.ca/data/api/action/package_show?id=f064a144-b4e0-4e9b-9970-e0fc2f84d1a8"
     },
     "pbo": {
       "status": "not_implemented",
