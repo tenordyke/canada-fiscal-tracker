@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-11-08T03:30:39+00:00",
+  "last_updated": "2026-11-08T12:28:55+00:00",
   "fetchers": {
     "fiscal_monitor": {
-      "status": "error",
-      "error": "ConnectTimeout: HTTPSConnectionPool(host='open.canada.ca', port=443): Max retries exceeded with url: /data/api/action/package_search?q=The+Fiscal+Monitor&rows=5 (Caused by ConnectTimeoutError(<HTTPSConnection(host='open.canada.ca', port=443) at 0x7bd021d24710>, 'Connection to open.canada.ca timed out. (connect timeout=30)'))"
+      "status": "ok",
+      "error": null
     },
     "oas_breakdown": {
-      "status": "error",
-      "error": "ConnectTimeout: HTTPSConnectionPool(host='open.canada.ca', port=443): Max retries exceeded with url: /data/api/action/package_show?id=f064a144-b4e0-4e9b-9970-e0fc2f84d1a8 (Caused by ConnectTimeoutError(<HTTPSConnection(host='open.canada.ca', port=443) at 0x7bd020ab0fb0>, 'Connection to open.canada.ca timed out. (connect timeout=30)'))"
+      "status": "ok",
+      "error": null
     },
     "pbo": {
       "status": "not_implemented",
