@@ -1,24 +1,17 @@
 {
   "source": "Employment and Social Development Canada",
   "source_name": "OAS Net payments, by benefit type and fiscal year",
-  "source_url": "https://open.canada.ca/data/dataset/f064a144-b4e0-4e9b-9970-e0fc2f84d1a8/resource/a3632660-d390-4db6-ae9f-8feef65b28d1/download/20250331-svpaienetfinanciere-oasnetpayfiscal.csv",
-  "fetched_at": "2026-11-10T13:58:32+00:00",
+  "source_url": "https://open.canada.ca/data/dataset/f064a144-b4e0-4e9b-9970-e0fc2f84d1a8/resource/a3632660-d390-4db6-ae9f-8feef65b28d1/download/20260331-svpaienetfinanciere-oasnetpayfiscal.csv",
+  "fetched_at": "2026-11-10T22:39:51+00:00",
   "units": "CAD (absolute dollars)",
   "latest": {
-    "fiscal_year": "2024-2025",
-    "oas_pension": 60648088711,
-    "gis": 18910375539,
-    "allowance": 631884378,
-    "total": 80190348629
+    "fiscal_year": "2025-2026",
+    "oas_pension": 62854132768,
+    "gis": 19305737732,
+    "allowance": 589782504,
+    "total": 82749653004
   },
   "series": [
-    {
-      "fiscal_year": "2015-2016",
-      "oas_pension": 35050472599,
-      "gis": 9921659952,
-      "allowance": 512566866,
-      "total": 45484699417
-    },
     {
       "fiscal_year": "2016-2017",
       "oas_pension": 36749167282,
@@ -81,6 +74,13 @@
       "gis": 18910375539,
       "allowance": 631884378,
       "total": 80190348629
+    },
+    {
+      "fiscal_year": "2025-2026",
+      "oas_pension": 62854132768,
+      "gis": 19305737732,
+      "allowance": 589782504,
+      "total": 82749653004
     }
   ]
 }
